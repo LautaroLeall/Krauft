@@ -1,0 +1,40 @@
+.manifesto {
+    padding: 8rem 1.5rem;
+    background: #050505;
+}
+
+.manifesto-container {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.manifesto-line {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: white;
+    position: relative;
+}
+
+.manifesto-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 3px;
+    background: var(--lime);
+    transition: width 0.4s ease;
+}
+
+.manifesto-line:hover::after {
+    width: 100%;
+}
+
+.manifesto-line:hover {
+    color: var(--lime);
+}
