@@ -1,0 +1,70 @@
+.hero {
+    padding: 8rem 1.5rem;
+    background: radial-gradient(circle at top right, #111 0%, #050505 60%);
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.hero-tag {
+    display: inline-block;
+    color: var(--lime);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 span {
+    color: var(--lime);
+}
+
+.hero p {
+    color: var(--gray);
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-outline {
+    border: 2px solid var(--lime);
+    color: var(--lime);
+    padding: 0.6rem 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero {
+        padding: 6rem 1.2rem;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .hero-actions button {
+        width: 100%;
+    }
+}
