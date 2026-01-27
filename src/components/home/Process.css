@@ -1,0 +1,51 @@
+.process {
+    padding: 8rem 1.5rem;
+    background: linear-gradient(to bottom, #050505, #0a0a0a);
+}
+
+.process-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.process-header {
+    max-width: 600px;
+    margin-bottom: 4rem;
+}
+
+.process-header h2 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+}
+
+.process-header h2 span {
+    color: var(--lime);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+}
+
+.process-card {
+    border-left: 1px solid var(--border-dark);
+    padding-left: 1.5rem;
+}
+
+.process-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(204, 255, 0, 0.15);
+}
+
+.process-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.process-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+}
