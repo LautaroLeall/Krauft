@@ -1,0 +1,12 @@
+:root {
+    --lime: #ccff00;
+    --lime-hover: #b3e600;
+    --black: #050505;
+    --black-soft: #111111;
+    --border-dark: #222222;
+    --white: #ffffff;
+    --gray: #9ca3af;
+
+    --font-display: "Space Grotesk", sans-serif;
+    --font-base: "Inter", sans-serif;
+}
