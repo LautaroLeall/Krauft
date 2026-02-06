@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
-import Chatbot from "./components/chatbot/Chatbot";
 import Footer from "./components/layout/Footer";
+import BtnWhatsapp from "./components/layout/BtnWhatsapp";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/nosotros" element={<About />} />
       </Routes>
 
-      <Chatbot />
+      <BtnWhatsapp />
 
       <Footer />
     </BrowserRouter>
