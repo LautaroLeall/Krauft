@@ -27,8 +27,9 @@ export default function Hero() {
                 </p>
 
                 <div className="hero-actions">
-                    <button className="btn-primary">Empezar</button>
-                    <button className="btn-outline">Nuestro sistema</button>
+                    <a href="https://wa.me/+5493816436944" target="_blank" rel="noopener noreferrer" className="btn-primary">Empezar</a>
+                    <a href="#services" className="btn-primary">Servicios</a>
+                    <a href="#process" className="btn-primary">Proceso</a>
                 </div>
             </motion.div>
         </section>
