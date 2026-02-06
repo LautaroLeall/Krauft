@@ -23,7 +23,7 @@ export default function CTA() {
 
                 <div className="cta-actions">
                     <a
-                        href="https://wa.me/5490000000000"
+                        href="https://wa.me/+5493816436944"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-primary"
