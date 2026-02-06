@@ -1,12 +1,17 @@
 import { NavLink } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { useState } from "react";
 import "./Header.css";
 
 export default function Header() {
+
+    const [open, setOpen] = useState(false);
+
     return (
         <header className="header">
             <div className="header-container">
+
                 <NavLink to="/" className="logo">
                     <span className="logo-box">K</span>
                     <span className="logo-text">
@@ -14,12 +19,40 @@ export default function Header() {
                     </span>
                 </NavLink>
 
-                <nav className="nav">
-                    <AnimatedLink to="/">Servicios</AnimatedLink>
-                    <AnimatedLink to="/nosotros">Nosotros</AnimatedLink>
+                {/* Botón Mobile */}
+                <button
+                    className="menu-btn"
+                    onClick={() => setOpen(!open)}
+                >
+                    ☰
+                </button>
+
+                {/* Navegación */}
+                <nav className={`nav ${open ? "open" : ""}`}>
+
+                    <AnimatedLink to="/" onClick={() => setOpen(false)}>
+                        Servicios
+                    </AnimatedLink>
+
+                    <AnimatedLink to="/nosotros" onClick={() => setOpen(false)}>
+                        Nosotros
+                    </AnimatedLink>
+
+                    <NavLink
+                        to="/nosotros#contacto"
+                        className="btn-primary mobile-btn"
+                        onClick={() => setOpen(false)}
+                    >
+                        Contacto
+                    </NavLink>
+
                 </nav>
 
-                <NavLink to="/nosotros#contacto" className="btn-primary">
+                {/* Botón Desktop */}
+                <NavLink
+                    to="/nosotros#contacto"
+                    className="btn-primary desktop-btn"
+                >
                     Contacto
                 </NavLink>
 
@@ -28,10 +61,14 @@ export default function Header() {
     );
 }
 
-function AnimatedLink({ to, children }) {
+
+function AnimatedLink({ to, children, onClick }) {
+
     return (
-        <NavLink to={to} className="nav-link">
+        <NavLink to={to} className="nav-link" onClick={onClick}>
+
             {({ isActive }) => (
+
                 <motion.span
                     initial={false}
                     animate={{
@@ -43,7 +80,9 @@ function AnimatedLink({ to, children }) {
                     {children}
                     {isActive && <span className="active-dot" />}
                 </motion.span>
+
             )}
+
         </NavLink>
     );
 }
