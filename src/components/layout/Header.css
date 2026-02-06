@@ -64,3 +64,79 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
+
+/* MOBILE MENU */
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Desktop */
+.desktop-btn {
+    display: inline-block;
+}
+
+.mobile-btn {
+    display: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .header-container {
+        position: relative;
+    }
+
+    /* Mostrar botón hamburguesa */
+    .menu-btn {
+        display: block;
+    }
+
+    /* Ocultar botón desktop */
+    .desktop-btn {
+        display: none;
+    }
+
+    /* Menú oculto por defecto */
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(10px);
+
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+
+        padding: 2rem 0;
+
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+    /* Menú abierto */
+    .nav.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    /* Links más grandes */
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    /* Botón dentro del menú */
+    .mobile-btn {
+        display: inline-block;
+        margin-top: 1rem;
+    }
+}
