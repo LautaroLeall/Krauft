@@ -31,12 +31,25 @@
 .process-card {
     border-left: 1px solid var(--border-dark);
     padding-left: 1.5rem;
+    transition: all 0.5s;
+}
+
+.process-card:hover {
+    border-left-color: var(--lime);
+    transition: all 0.5s ease;
+    cursor: pointer;
 }
 
 .process-number {
     font-size: 2.5rem;
     font-weight: 700;
     color: rgba(204, 255, 0, 0.15);
+    transition: color 0.5s;
+}
+
+.process-card:hover .process-number {
+    color: var(--lime);
+    transition: color 0.5s ease;
 }
 
 .process-card h3 {
