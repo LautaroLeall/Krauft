@@ -23,7 +23,7 @@ const services = [
 
 export default function Services() {
     return (
-        <section className="services">
+        <section className="services" id="services">
             <div className="services-container">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
