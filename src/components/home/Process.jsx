@@ -37,7 +37,7 @@ const steps = [
 
 export default function Process() {
     return (
-        <section className="process">
+        <section className="process" id="process">
             <div className="process-container">
                 <motion.div
                     className="process-header"
