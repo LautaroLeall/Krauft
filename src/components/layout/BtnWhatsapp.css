@@ -1,0 +1,21 @@
+.btn-whatsapp {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 10;
+    padding: 0.6rem 0.9rem;
+    border: 2px solid var(--border-dark);
+    background: linear-gradient(to bottom, #050505, #0a0a0a);
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 1.5rem;
+}
+
+.btn-whatsapp:hover {
+    border-color: var(--lime);
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp-text {
+    color: var(--lime);
+}
