@@ -1,4 +1,8 @@
+/* IMPORTAR FUENTES DE GOOGLE */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700;800&display=swap');
+
 :root {
+    /* PALETA KRAUFT */
     --lime: #ccff00;
     --lime-hover: #b3e600;
     --black: #050505;
@@ -7,6 +11,7 @@
     --white: #ffffff;
     --gray: #9ca3af;
 
+    /* FUENTES */
     --font-display: "Space Grotesk", sans-serif;
     --font-base: "Inter", sans-serif;
 }
