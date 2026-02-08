@@ -35,40 +35,61 @@ const steps = [
     },
 ];
 
+
 export default function Process() {
     return (
-        <section className="process" id="process">
-            <div className="process-container">
-                <motion.div
-                    className="process-header"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <span className="section-tag">Nuestro método</span>
-                    <h2>
-                        Proceso claro. <br />
-                        <span>Resultados reales.</span>
-                    </h2>
-                </motion.div>
+            <section className="process-section" id="proceso">
+                <div className="process-container">
 
-                <div className="process-grid">
-                    {steps.map((step, i) => (
-                        <motion.div
-                            key={i}
-                            className="process-card"
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                        >
-                            <span className="process-number">{step.number}</span>
-                            <h3>{step.title}</h3>
-                            <p>{step.desc}</p>
-                        </motion.div>
-                    ))}
+                    {/* HEADER */}
+                    <motion.div
+                        className="process-header"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <span className="section-tag">Nuestro método</span>
+                        <h2 className="process-title">
+                            PROCESO CLARO. <br />
+                            <span>RESULTADOS REALES.</span>
+                        </h2>
+                    </motion.div>
+
+                    {/* TIMELINE */}
+                    <div className="timeline">
+                        {steps.map((step, index) => {
+                            const isEven = (index + 1) % 2 === 0; // Identificar si es par
+                            return (
+                                <motion.div
+                                    key={index}
+                                    className={`timeline-item ${isEven ? "even" : "odd"}`}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                >
+
+                                    {/* CONTENIDO */}
+                                    <div className="timeline-content-box">
+                                        <h3 className="step-title">{step.title}</h3>
+                                        <p className="step-desc">{step.desc}</p>
+                                    </div>
+
+                                    {/* MARCADOR */}
+                                    <div className="timeline-marker">
+                                        <span className="marker-number">{step.number}</span>
+                                    </div>
+
+                                    {/* ESPACIADOR */}
+                                    <div className="timeline-spacer"></div>
+
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+
                 </div>
-            </div>
-        </section>
+            </section>
     );
 }
