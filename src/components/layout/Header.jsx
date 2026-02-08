@@ -1,88 +1,115 @@
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import "./Header.css";
 
 export default function Header() {
-
     const [open, setOpen] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // Bloquear scroll cuando el menú móvil está abierto
+    useEffect(() => {
+        document.body.style.overflow = open ? "hidden" : "unset";
+    }, [open]);
+
+    // Función para navegación suave
+    const handleNav = (e, targetId) => {
+        e.preventDefault();
+
+        // Si estamos en home, scroll suave
+        if (location.pathname === "/") {
+            const element = document.getElementById(targetId);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        } else {
+            // Si no estamos en home, navegar a home y luego scroll (simplificado)
+            navigate("/");
+            setTimeout(() => {
+                const element = document.getElementById(targetId);
+                if (element) element.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+        }
+        setOpen(false);
+    };
 
     return (
         <header className="header">
             <div className="header-container">
 
-                <NavLink to="/" className="logo">
-                    <span className="logo-box">K</span>
-                    <span className="logo-text">
-                        Krauft<sup>™</sup>
-                    </span>
+                {/* LOGO */}
+                <NavLink to="/" className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                    <div className="logo-box">
+                        <img
+                            src="/icon-nav.png"
+                            alt="icono-krauft"
+                            className="k-icon"
+                        />
+                    </div>
+
+                    <div className="logo-text-container">
+                        <span className="logo-text">
+                            krauft<span className="text-lime">.</span>
+                        </span>
+                        <span className="logo-tagline">
+                            mkt inmobiliario
+                        </span>
+                    </div>
                 </NavLink>
 
-                {/* Botón Mobile */}
+                {/* BOTÓN MOBILE */}
                 <button
                     className="menu-btn"
                     onClick={() => setOpen(!open)}
+                    aria-label="Toggle menu"
                 >
-                    ☰
+                    {open ? <X /> : <Menu />}
                 </button>
 
-                {/* Navegación */}
+                {/* NAV */}
                 <nav className={`nav ${open ? "open" : ""}`}>
+                    <div className="nav-links-wrapper">
+                        <button onClick={(e) => handleNav(e, 'propuesta')} className="nav-item btn-ghost">
+                            PROPUESTA
+                        </button>
+                        <button onClick={(e) => handleNav(e, 'servicios')} className="nav-item btn-ghost">
+                            SERVICIOS
+                        </button>
+                        <button onClick={(e) => handleNav(e, 'proceso')} className="nav-item btn-ghost">
+                            PROCESO
+                        </button>
+                        <button onClick={(e) => handleNav(e, 'manifiesto')} className="nav-item btn-ghost">
+                            MANIFIESTO
+                        </button>
 
-                    <AnimatedLink to="/" onClick={() => setOpen(false)}>
-                        Servicios
-                    </AnimatedLink>
-
-                    <AnimatedLink to="/nosotros" onClick={() => setOpen(false)}>
-                        Nosotros
-                    </AnimatedLink>
-
-                    <NavLink
-                        to="/nosotros#contacto"
-                        className="btn-primary mobile-btn"
-                        onClick={() => setOpen(false)}
-                    >
-                        Contacto
-                    </NavLink>
-
+                        <NavLink
+                            to="/contacto"
+                            className="btn-primary"
+                            onClick={() => setOpen(false)}
+                        >
+                            CONTACTO
+                        </NavLink>
+                    </div>
                 </nav>
-
-                {/* Botón Desktop */}
-                <NavLink
-                    to="/nosotros#contacto"
-                    className="btn-primary desktop-btn"
-                >
-                    Contacto
-                </NavLink>
-
             </div>
+
+            {/* OVERLAY */}
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        className="mobile-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
         </header>
-    );
-}
-
-
-function AnimatedLink({ to, children, onClick }) {
-
-    return (
-        <NavLink to={to} className="nav-link" onClick={onClick}>
-
-            {({ isActive }) => (
-
-                <motion.span
-                    initial={false}
-                    animate={{
-                        color: isActive ? "#ccff00" : "#9ca3af",
-                    }}
-                    whileHover={{ y: -2 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                >
-                    {children}
-                    {isActive && <span className="active-dot" />}
-                </motion.span>
-
-            )}
-
-        </NavLink>
     );
 }
