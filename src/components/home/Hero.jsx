@@ -4,12 +4,12 @@ import "./Hero.css";
 
 export default function Hero() {
     return (
-        <section className="hero">
+        <section className="hero" id="home">
             <motion.div
                 className="hero-content"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
             >
                 <span className="hero-tag">Marketing Inmobiliario</span>
 
@@ -22,16 +22,32 @@ export default function Hero() {
                 </h1>
 
                 <p>
-                    Impulsamos inmobiliarias con branding, automatización y generación de
-                    leads calificados.
+                    Krauft nace como una agencia de marketing inmobiliario que combina estrategia, innovación y precisión visual.
                 </p>
 
                 <div className="hero-actions">
-                    <a href="https://wa.me/+5493816436944" target="_blank" rel="noopener noreferrer" className="btn-primary">Empezar</a>
-                    <a href="#services" className="btn-primary">Servicios</a>
-                    <a href="#process" className="btn-primary">Proceso</a>
+                    {/* Botón Principal (WhatsApp) */}
+                    <a
+                        href="https://wa.me/+5493816436944"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary"
+                    >
+                        Empezar
+                    </a>
+
+                    {/* Enlaces de Navegación Interna */}
+                    <a href="#servicios" className="btn-primary btn-ghost">
+                        Servicios
+                    </a>
+                    <a href="#proceso" className="btn-primary btn-ghost">
+                        Proceso
+                    </a>
                 </div>
             </motion.div>
+
+            {/* Elemento Decorativo de Fondo (Opcional, para dar profundidad) */}
+            <div className="hero-glow"></div>
         </section>
     );
 }

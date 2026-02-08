@@ -1,44 +1,87 @@
 .hero {
-    padding: 8rem 1.5rem;
-    background: radial-gradient(circle at top right, #111 0%, #050505 60%);
+    position: relative;
+    padding: 10rem 1.5rem 8rem;
+    /* Ajustado top para compensar el Navbar fijo */
+    background: radial-gradient(circle at top right, #111111 0%, #050505 60%);
+    min-height: 100vh;
+    /* Ocupa casi toda la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 10;
     max-width: 900px;
+    width: 100%;
     margin: auto;
     text-align: center;
 }
 
+/* Etiqueta superior */
 .hero-tag {
     display: inline-block;
     color: var(--lime);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    margin-bottom: 1rem;
+    font-family: var(--font-base);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-dark);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    background: rgba(204, 255, 0, 0.05);
 }
 
+/* Título Principal */
 .hero h1 {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    line-height: 1;
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    /* Responsive typography fluido */
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
 }
 
 .hero h1 span {
     color: var(--lime);
 }
 
+/* Párrafo descriptivo */
 .hero p {
     color: var(--gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
     max-width: 600px;
-    margin: auto;
-    margin-bottom: 2.5rem;
+    margin: 0 auto 3rem;
+    font-weight: 300;
 }
 
+/* Botones y Acciones */
 .hero-actions {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    align-items: center;
+}
+
+/* Estilo adicional para botones secundarios si quieres que se vean diferentes */
+.btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--border-dark);
+}
+
+.btn-ghost:hover {
+    border-color: var(--lime);
+    color: var(--lime);
+    background: transparent;
+    box-shadow: none;
 }
 
 .btn-outline {
@@ -47,24 +90,51 @@
     padding: 0.6rem 1.2rem;
     font-weight: 700;
     text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: var(--lime);
+    color: var(--black);
+}
+
+/* Glow de fondo sutil */
+.hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: var(--lime);
+    filter: blur(150px);
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .hero {
-        padding: 6rem 1.2rem;
+        padding: 8rem 1.2rem 4rem;
     }
 
-    .hero-content {
-        text-align: center;
+    .hero h1 {
+        margin-bottom: 1.5rem;
     }
 
     .hero-actions {
         flex-direction: column;
         gap: 0.8rem;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
     }
 
-    .hero-actions button {
+    .hero-actions a {
         width: 100%;
+        text-align: center;
+        justify-content: center;
     }
 }
