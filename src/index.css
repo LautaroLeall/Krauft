@@ -1,49 +1,20 @@
 @import "./styles/variables.css";
 
-* {
-  box-sizing: border-box;
-}
-
-html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-base);
   background-color: var(--black);
   color: var(--white);
-  overflow-x: hidden;
+  font-family: var(--font-base);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Scroll suave para toda la web */
 html {
   scroll-behavior: smooth;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  font-family: inherit;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-button,
-a.btn-primary,
-a.btn-outline {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-button:hover,
-a.btn-primary:hover,
-a.btn-outline:hover {
-  transform: translateY(-2px);
-}
-
-button:active,
-a.btn-primary:active,
-a.btn-outline:active {
-  transform: scale(0.97);
+/* Selección de texto color Lime */
+::selection {
+  background-color: var(--lime);
+  color: var(--black);
 }
