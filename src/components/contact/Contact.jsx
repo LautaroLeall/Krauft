@@ -5,7 +5,29 @@ import { Mail, Instagram, Send } from "lucide-react";
 import "./Contact.css";
 
 export default function Contact() {
+    // Estado para controlar si el mensaje fue enviado
     const [sent, setSent] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Evita recarga de la página
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        try {
+            await fetch("https://formsubmit.co/ajax/bykrauft@gmail.com", {
+                method: "POST",
+                body: formData,
+            });
+
+            setSent(true); // Muestra mensaje de éxito
+            form.reset();  // Limpia el formulario
+        } catch (error) {
+            console.error("Error enviando formulario:", error);
+            alert("Error al enviar el formulario. Intentá nuevamente.");
+        }
+
+    };
 
     return (
         <section className="contact-section" id="contacto">
@@ -19,7 +41,6 @@ export default function Contact() {
                 transition={{ duration: 0.6 }}
             >
                 <div className="contact-card-wrapper">
-                    {/* Decoración Esquina */}
                     <div className="glow-corner"></div>
 
                     {!sent ? (
@@ -29,15 +50,17 @@ export default function Contact() {
                                 <p>¿Listo para llevar tu inmobiliaria al siguiente nivel?</p>
                             </div>
 
+                            {/* Redes / Contacto directo */}
                             <div className="social-grid">
-                                {/* Email Card */}
-                                <a href="mailto:bykrauft@gmail.com" className="social-card group">
+                                <a
+                                    href="mailto:bykrauft@gmail.com"
+                                    className="social-card group"
+                                >
                                     <Mail className="social-icon" size={32} />
                                     <span className="social-label">Email</span>
                                     <span className="social-value">bykrauft@gmail.com</span>
                                 </a>
 
-                                {/* Instagram Card */}
                                 <a
                                     href="https://instagram.com/bykrauft"
                                     target="_blank"
@@ -51,22 +74,43 @@ export default function Contact() {
                             </div>
 
                             {/* Formulario */}
-                            <form
-                                className="contact-form"
-                                action="https://formsubmit.co/bykrauft@gmail.com"
-                                method="POST"
-                                onSubmit={() => setSent(true)}
-                            >
-                                <input type="hidden" name="_subject" value="Nuevo contacto desde Web Krauft" />
-                                <input type="hidden" name="_captcha" value="false" />
-                                <input type="hidden" name="_next" value={window.location.href} />
+                            <form className="contact-form" onSubmit={handleSubmit}>
+                                {/* Configuración FormSubmit */}
+                                <input
+                                    type="hidden"
+                                    name="_subject"
+                                    value="Nuevo contacto desde Web Krauft"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="_captcha"
+                                    value="false"
+                                />
 
                                 <div className="form-row">
-                                    <input type="text" name="name" className="form-input" placeholder="NOMBRE" required />
-                                    <input type="text" name="company" className="form-input" placeholder="EMPRESA / INMOBILIARIA" />
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        className="form-input"
+                                        placeholder="NOMBRE"
+                                        required
+                                    />
+
+                                    <input
+                                        type="text"
+                                        name="company"
+                                        className="form-input"
+                                        placeholder="EMPRESA / INMOBILIARIA"
+                                    />
                                 </div>
 
-                                <input type="email" name="email" className="form-input" placeholder="CORREO ELECTRÓNICO" required />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    className="form-input"
+                                    placeholder="CORREO ELECTRÓNICO"
+                                    required
+                                />
 
                                 <textarea
                                     name="message"
@@ -74,7 +118,7 @@ export default function Contact() {
                                     className="form-input"
                                     placeholder="¿EN QUÉ PODEMOS AYUDARTE?"
                                     required
-                                ></textarea>
+                                />
 
                                 <button type="submit" className="btn-submit">
                                     Enviar Consulta <Send size={18} />
@@ -82,7 +126,7 @@ export default function Contact() {
                             </form>
                         </>
                     ) : (
-                        // Mensaje de Éxito
+                        /* Mensaje de éxito */
                         <motion.div
                             className="success-message"
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -92,10 +136,11 @@ export default function Contact() {
                             <p className="success-desc">
                                 Gracias por contactarnos. Te responderemos a la brevedad.
                             </p>
+
                             <button
                                 onClick={() => setSent(false)}
                                 className="btn-submit"
-                                style={{ maxWidth: '200px', margin: '2rem auto 0' }}
+                                style={{ maxWidth: "200px", margin: "2rem auto 0" }}
                             >
                                 Enviar otro
                             </button>
