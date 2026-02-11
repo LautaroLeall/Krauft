@@ -1,9 +1,8 @@
 .footer {
     background-color: var(--black);
     border-top: 1px solid var(--border-dark);
-    padding: 2rem 0;
+    padding: 2rem 0 1rem 0;
     margin-top: auto;
-    /* Empuja el footer al fondo si hay poco contenido */
 }
 
 .footer-container {
@@ -41,7 +40,7 @@
     font-family: var(--font-base);
 }
 
-/* --- ENLACES --- */
+/* ENLACES */
 .footer-links {
     display: flex;
     gap: 2rem;
@@ -65,10 +64,45 @@
     transform: translateY(-2px);
 }
 
-/* --- RESPONSIVE DESKTOP --- */
+/* INFO DEV */
+.footer-dev {
+    justify-content: end;
+    padding-right: 7rem;
+}
+
+.footer .github {
+    transition: 0.3s ease;
+    color: var(--gray);
+}
+
+.footer .github:hover {
+    color: var(--lime);
+    transform: scale(0.95);
+    transition: 0.3s ease;
+}
+
+.footer .linkedin {
+    color: var(--gray);
+    transition: 0.3s ease;
+}
+
+.footer .linkedin:hover {
+    color: var(--lime);
+    transform: scale(0.95);
+    transition: 0.3s ease;
+}
+
+/* RESPONSIVE DESKTOP */
 @media (min-width: 768px) {
     .footer-container {
         flex-direction: row;
         justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-dev {
+        justify-content: center;
+        padding-right: 0;
     }
 }
