@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { Mail, Bot, Target, TrendingUp } from "lucide-react";
 import "./Services.css";
