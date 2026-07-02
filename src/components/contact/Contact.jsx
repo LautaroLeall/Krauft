@@ -1,6 +1,6 @@
 import { useState } from "react";
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { CONTACT } from "../../config/constants";
 import { Mail, Instagram, Send } from "lucide-react";
 import "./Contact.css";
 
@@ -15,10 +15,14 @@ export default function Contact() {
         const formData = new FormData(form);
 
         try {
-            await fetch("https://formsubmit.co/ajax/bykrauft@gmail.com", {
+            const response = await fetch(`https://formsubmit.co/ajax/${CONTACT.EMAIL}`, {
                 method: "POST",
                 body: formData,
             });
+
+            if (!response.ok) {
+                throw new Error("Error en el servidor");
+            }
 
             setSent(true); // Muestra mensaje de éxito
             form.reset();  // Limpia el formulario
@@ -53,16 +57,16 @@ export default function Contact() {
                             {/* Redes / Contacto directo */}
                             <div className="social-grid">
                                 <a
-                                    href="mailto:bykrauft@gmail.com"
+                                    href={`mailto:${CONTACT.EMAIL}`}
                                     className="social-card group"
                                 >
                                     <Mail className="social-icon" size={32} />
                                     <span className="social-label">Email</span>
-                                    <span className="social-value">bykrauft@gmail.com</span>
+                                    <span className="social-value">{CONTACT.EMAIL}</span>
                                 </a>
 
                                 <a
-                                    href="https://instagram.com/bykrauft"
+                                    href={CONTACT.INSTAGRAM}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="social-card group"

@@ -1,5 +1,5 @@
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { CONTACT } from "../../config/constants";
 import { FaWhatsapp } from "react-icons/fa";
 import "./BtnWhatsapp.css";
 
@@ -14,7 +14,8 @@ export default function BtnWhatsapp() {
 
             {/* Botón */}
             <motion.a
-                href="https://wa.me/+5493816436944"
+                href={CONTACT.WHATSAPP_URL}
+                aria-label="Contactar por WhatsApp"
                 target="_blank"
                 rel="noreferrer"
                 className="btn-whatsapp"
@@ -28,13 +29,7 @@ export default function BtnWhatsapp() {
                 }}
                 whileHover={{ rotate: 15 }}
             >
-                <svg
-                    className="whatsapp-icon"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <FaWhatsapp size={24} />
-                </svg>
+                <FaWhatsapp className="whatsapp-icon" size={24} />
             </motion.a>
         </div>
     );
