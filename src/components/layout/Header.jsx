@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import "./Header.css";
@@ -15,11 +14,10 @@ export default function Header() {
         document.body.style.overflow = open ? "hidden" : "unset";
     }, [open]);
 
-    // Función para navegación suave
     const handleNav = (e, targetId) => {
         e.preventDefault();
+        setOpen(false);
 
-        // Si estamos en home, scroll suave
         if (location.pathname === "/") {
             const element = document.getElementById(targetId);
             if (element) {
@@ -28,14 +26,17 @@ export default function Header() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
             }
         } else {
-            // Si no estamos en home, navegar a home y luego scroll (simplificado)
             navigate("/");
-            setTimeout(() => {
+            const checkElement = setInterval(() => {
                 const element = document.getElementById(targetId);
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-            }, 100);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                    clearInterval(checkElement);
+                }
+            }, 50);
+            
+            setTimeout(() => clearInterval(checkElement), 1000);
         }
-        setOpen(false);
     };
 
     return (
@@ -74,7 +75,7 @@ export default function Header() {
                 {/* NAV */}
                 <nav className={`nav ${open ? "open" : ""}`}>
                     <div className="nav-links-wrapper">
-                        <button onClick={(e) => handleNav(e, 'propuesta')} className="nav-item btn-ghost">
+                        <button onClick={(e) => handleNav(e, 'home')} className="nav-item btn-ghost">
                             PROPUESTA
                         </button>
                         <button onClick={(e) => handleNav(e, 'servicios')} className="nav-item btn-ghost">
