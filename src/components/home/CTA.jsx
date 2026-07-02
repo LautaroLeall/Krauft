@@ -1,5 +1,5 @@
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { CONTACT } from "../../config/constants";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import "./CTA.css";
 
@@ -28,7 +28,7 @@ export default function CTA() {
 
                 <div className="cta-actions">
                     <a
-                        href="https://wa.me/+5493816436944"
+                        href={CONTACT.WHATSAPP_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-cta-primary"

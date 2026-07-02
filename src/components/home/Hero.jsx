@@ -1,5 +1,5 @@
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { CONTACT } from "../../config/constants";
 import "./Hero.css";
 
 export default function Hero() {
@@ -28,7 +28,7 @@ export default function Hero() {
                 <div className="hero-actions">
                     {/* Botón Principal (WhatsApp) */}
                     <a
-                        href="https://wa.me/+5493816436944"
+                        href={CONTACT.WHATSAPP_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-primary"

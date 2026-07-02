@@ -3,6 +3,7 @@ import {
     FaGithub,
     FaLinkedin
 } from 'react-icons/fa'
+import { CONTACT, DEVELOPERS } from "../../config/constants";
 import "./Footer.css";
 
 export default function Footer() {
@@ -23,13 +24,13 @@ export default function Footer() {
 
                 {/* DERECHA: REDES SOCIALES */}
                 <div className="footer-links">
-                    <a href="mailto:bykrauft@gmail.com" className="footer-link-item" target="_blank" rel="noopener noreferrer">
+                    <a href={`mailto:${CONTACT.EMAIL}`} className="footer-link-item" target="_blank" rel="noopener noreferrer">
                         <Mail size={16} />
                         <span>Email</span>
                     </a>
 
                     <a
-                        href="https://instagram.com/bykrauft"
+                        href={CONTACT.INSTAGRAM}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="footer-link-item"
@@ -43,13 +44,15 @@ export default function Footer() {
 
             <div className="footer-dev d-flex align-items-center pt-2 gap-3">
                 <div className="redes-dev d-flex gap-3">
-                    <a href="https://github.com/LautaroLeall"
+                    <a href={DEVELOPERS.LAUTARO.GITHUB}
                         target="_blank"
+                        aria-label="Perfil de GitHub del desarrollador"
                         className='github text-decoration-none'>
                         <FaGithub className='fs-6' />
                     </a>
-                    <a href="https://www.linkedin.com/in/lauldp/"
+                    <a href={DEVELOPERS.LAUTARO.LINKEDIN}
                         target="_blank"
+                        aria-label="Perfil de LinkedIn del desarrollador"
                         className='linkedin text-decoration-none'>
                         <FaLinkedin className='fs-6' />
                     </a>
@@ -58,8 +61,8 @@ export default function Footer() {
                     <p className="p-0 m-0 copyright">
                         Desarrollado por
                     </p>
-                    <a href="https://wa.me/5493813399463" target="_blank" rel="noopener noreferrer" className="copyright">
-                        Lautaro Leal
+                    <a href={DEVELOPERS.LAUTARO.WHATSAPP} target="_blank" rel="noopener noreferrer" className="copyright">
+                        {DEVELOPERS.LAUTARO.NAME}
                     </a>
                 </div>
             </div>
